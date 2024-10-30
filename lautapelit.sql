@@ -46,6 +46,7 @@ INSERT INTO lautapeli (lautapeli_nimi, min_pelaajamaara, hinta, julkaisija_id) V
 INSERT INTO pelaaja (nimimerkki) VALUES ('Pertsa');
 INSERT INTO pelaaja (nimimerkki) VALUES ('Mirkku89');
 INSERT INTO pelaaja (nimimerkki) VALUES ('Axuliina1234');
+INSERT INTO pelaaja (nimimerkki) VALUES ('KCMK');
 
 INSERT INTO arvostelu (lautapeli_id, pelaaja_id, pisteet) VALUES (2, 1, 7);
 INSERT INTO arvostelu (lautapeli_id, pelaaja_id, pisteet) VALUES (3, 1, 8);
@@ -55,10 +56,22 @@ INSERT INTO arvostelu (lautapeli_id, pelaaja_id, pisteet) VALUES (4, 3, 10);
 INSERT INTO arvostelu (lautapeli_id, pelaaja_id, pisteet) VALUES (5, 2, 8);
 INSERT INTO arvostelu (lautapeli_id, pelaaja_id, pisteet) VALUES (6, 1, 10);
 
+INSERT INTO arvostelu (lautapeli_id, pelaaja_id, pisteet) VALUES (1, 1, 9);
+INSERT INTO arvostelu (lautapeli_id, pelaaja_id, pisteet) VALUES (2, 4, 9);
+
 
 /*KYSELYJÄ*/
 
-SELECT lautapeli_nimi FROM lautapeli WHERE min_pelaajamaara = 1 and hinta < 50;
+SELECT lautapeli_nimi 
+FROM lautapeli 
+WHERE min_pelaajamaara = 1 and hinta < 50;
+
+SELECT lautapeli.lautapeli_nimi, pelaaja.nimimerkki
+FROM arvostelu
+JOIN lautapeli ON(arvostelu.lautapeli_id = lautapeli.id)
+JOIN pelaaja ON(arvostelu.pelaaja_id = pelaaja.id)
+WHERE arvostelu.pisteet = 9;
+
 
 
 
